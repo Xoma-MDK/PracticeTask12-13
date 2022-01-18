@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PracticeTask12_13
+namespace ConsoleApp1
 {
     internal class Program
     {
@@ -11,7 +11,11 @@ namespace PracticeTask12_13
         }
         static int Combinations(int n, int m)
         {
-            return Fact(n) / (Fact(m)*Fact(n-m));
+            return Fact(n) / (Fact(m) * Fact(n - m));
+        }
+        static void Combinations(int n, int m, out int response)
+        {
+            response = Fact(n) / (Fact(m) * Fact(n - m));
         }
         static void printArray(int[] array)
         {
@@ -33,7 +37,7 @@ namespace PracticeTask12_13
                     index = i;
                 }
             }
-            for (int i = index + 1; i < array.Length;i++)
+            for (int i = index + 1; i < array.Length; i++)
             {
                 array[i] = 1;
             }
@@ -48,7 +52,9 @@ namespace PracticeTask12_13
             int m = int.Parse(Console.ReadLine());
             if (n > m)
             {
-                Console.WriteLine($"Число сочетаний из n по m: {Combinations(n, m)}");
+                int temp;
+                Combinations(n, m, out temp);
+                Console.WriteLine($"Число сочетаний из n по m: {Combinations(n, m)}(метод-функция) {temp}(метод-процедура)");
             }
             else
             {
